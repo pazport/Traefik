@@ -5,6 +5,7 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
+source /opt/plexguide/menu/functions/functions.sh
 source /opt/plexguide/menu/functions/start.sh
 main() {
   local file=$1 val=$2 var=$3
@@ -274,14 +275,11 @@ EOF
   # Last Piece of the Interface
   tee <<-EOF
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+--------------------------------------------------------------------------
 [A] Deploy Traefik      : [$deployed]
 [B] Destroy Traefik
-[Z] Back
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
-
+end_menu
   # Standby
   read -p 'Type a Number | Press [ENTER]: ' typed </dev/tty
 
