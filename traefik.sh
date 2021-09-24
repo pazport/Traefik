@@ -25,8 +25,8 @@ traefikstart() {
   A) blockdeploycheck && deploytraefik &&  bash /opt/traefik/traefik.sh && exit ;;
   B) destroytraefik && bash /opt/traefik/traefik.sh && exit ;;
   b) destroytraefik && bash /opt/traefik/traefik.sh && exit ;;
-  z) clear && networking && clear && primestart;;
-  Z) clear && networking && clear && primestart;;
+  z) clear && networking;;
+  Z) clear && networking;;
   *) traefikstart ;;
   esac
 
