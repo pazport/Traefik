@@ -7,6 +7,7 @@
 ################################################################################
 source /opt/plexguide/menu/functions/functions.sh
 source /opt/plexguide/menu/functions/start.sh
+typed="${typed,,}"
 main() {
   local file=$1 val=$2 var=$3
   [[ -e $file ]] || printf '%s\n' "$val" >"$file"
@@ -89,7 +90,7 @@ domaininterface() {
 To quit, type >>> z or exit
 EOF
   read -p 'Input Value | Press [ENTER]: ' typed </dev/tty
-  if [[ "$typed" == "exit" || "$typed" == "Exit" || "$typed" == "EXIT" || "$typed" == "z" || "$typed" == "Z" ]]; then traefikstart; fi
+  if [[ "${typed}" == "exit" || "${typed}" == "z" ]]; then traefikstart; fi
   if [[ $(echo ${typed} | grep "\.") == "" ]]; then
 
     tee <<-EOF
@@ -275,11 +276,11 @@ EOF
   # Last Piece of the Interface
   tee <<-EOF
 
---------------------------------------------------------------------------
+-------------------------------------------------------------------------
 [A] Deploy Traefik      : [$deployed]
 [B] Destroy Traefik
 EOF
-end_menu
+end_menu_back
   # Standby
   read -p 'Type a Number | Press [ENTER]: ' typed </dev/tty
 

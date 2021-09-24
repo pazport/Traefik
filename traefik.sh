@@ -6,6 +6,7 @@
 # GNU:        General Public License v3.0
 ################################################################################
 source /opt/traefik/functions.sh
+source /opt/plexguide/menu/functions/start.sh
 
 traefikstart() {
 
@@ -23,8 +24,8 @@ traefikstart() {
   A) blockdeploycheck && deploytraefik &&  bash /opt/traefik/traefik.sh && exit ;;
   B) destroytraefik && bash /opt/traefik/traefik.sh && exit ;;
   b) destroytraefik && bash /opt/traefik/traefik.sh && exit ;;
-  z) exit ;;
-  Z) exit ;;
+  z) exit && networking;;
+  Z) exit && networking;;
   *) traefikstart ;;
   esac
 
