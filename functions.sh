@@ -225,7 +225,7 @@ EOF
   read -p 'Acknowledge Info | Press [ENTER] ' typed </dev/tty
 
 }
-
+menu="Traefik"
 layoutbuilder() {
 top_menu
   if [[ "$provider" == "NOT-SET" ]]; then layout=" "; fi
