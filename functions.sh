@@ -27,7 +27,7 @@ delaycheckinterface() {
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 Traefik - DNS Delay Check
+🛈 Traefik - DNS delay check
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 NOTE: This enables a certain amount of time to be delayed before the
@@ -35,14 +35,14 @@ provider validates your Traefik container! Setting it too low may result
 in the provider being unable to validate your traefik container, which may
 result in MISSING the opportunity to validate your https:// certificates!
 
-Delay the Traefik DNS Check for how many seconds? (Default 90)
+Delay the Traefik DNS check for how many seconds? (Default 90)
 
 EOF
 
   typed2=999999999
   while [[ "$typed2" -lt "30" || "$typed2" -gt "120" ]]; do
     echo "To quit, type >>> z or exit"
-    read -p 'Type Number Between 30 through 120 | Press [ENTER]: ' typed2 </dev/tty
+    read -p 'Type a number between 30 through 120 | Press [ENTER]: ' typed2 </dev/tty
     if [[ "$typed2" == "exit" || "$typed2" == "Exit" || "$typed2" == "EXIT" || "$typed2" == "z" || "$typed2" == "Z" ]]; then traefikstart; fi
     echo
   done
@@ -50,7 +50,7 @@ EOF
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 New DNS Delay Check Value: [$typed2] Seconds
+🛈 New DNS Delay check value: [$typed2] Seconds
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 NOTE 1: Make all changes first. Traefik must be deployed/redeployed for
@@ -72,11 +72,11 @@ destroytraefik() {
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 Traefik Container Destroyed!
+🛈 Traefik container has been destroyed!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  read -p 'Acknowledge Info | Press [ENTER] ' typed </dev/tty
+  read -p 'Acknowledge info | Press [ENTER] ' typed </dev/tty
 }
 
 domaininterface() {
@@ -84,7 +84,7 @@ domaininterface() {
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 Domain Name - Current Domain: $domain
+🛈 Domain Name - current domain: $domain
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 To quit, type >>> z or exit
@@ -96,11 +96,11 @@ EOF
     tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 Domain Name Invalid - Missing "." - $typed
+🛈 Domain name is invalid - Missing "." - $typed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p 'Acknowledge Info | Press [ENTER] ' typed </dev/tty
+    read -p 'Acknowledge info | Press [ENTER] ' typed </dev/tty
     domaininterface
     bash /opt/traefik/traefik.sh
     exit
@@ -109,7 +109,7 @@ EOF
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 Domain Name - Current Domain: $typed
+🛈 Domain name - current domain: $typed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 NOTE: Traefik must be deployed/redeployed for the domain name changes to
@@ -117,7 +117,7 @@ take affect!
 
 EOF
   echo $typed >/var/plexguide/server.domain
-  read -p 'Acknowledge Info | Press [ENTER] ' typed </dev/tty
+  read -p 'Acknowledge info | Press [ENTER] ' typed </dev/tty
 
 }
 
@@ -126,12 +126,12 @@ deploytraefik() {
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 Deploy Traefik with the Following Values?
+🛈 Deploy Traefik with the following values?
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Domain Provider: $provider
-Domain Name    : $domain
-EMail Address  : $email
+Domain provider: $provider
+Domain name    : $domain
+EMail address  : $email
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -171,12 +171,12 @@ emailinterface() {
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 Current EMail Address: $email
+🛈 Current eMail address: $email
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 To quit, type >>> z or exit
 EOF
-  read -p 'Input Value | Press [ENTER]: ' typed </dev/tty
+  read -p 'Input value | Press [ENTER]: ' typed </dev/tty
   if [[ "$typed" == "exit" || "$typed" == "Exit" || "$typed" == "EXIT" || "$typed" == "z" || "$typed" == "Z" ]]; then traefikstart; fi
 
   ### fix bug if user doesn't type .
@@ -185,11 +185,11 @@ EOF
     tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 EMail Invalid - Missing "." - $typed
+🛈 EMail invalid - Missing "." - $typed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p 'Acknowledge Info | Press [ENTER] ' typed </dev/tty
+    read -p 'Acknowledge info | Press [ENTER] ' typed </dev/tty
     emailinterface
     bash /opt/traefik/traefik.sh
     exit
@@ -200,11 +200,11 @@ EOF
     tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 EMail Invalid - Missing "@" - $typed
+🛈 EMail invalid - Missing "@" - $typed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p 'Acknowledge Info | Press [ENTER] ' typed </dev/tty
+    read -p 'Acknowledge info | Press [ENTER] ' typed </dev/tty
     emailinterface
     bash /opt/traefik/traefik.sh
     exit
@@ -214,7 +214,7 @@ EOF
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 New EMail Address: $typed
+🛈 New eMail address: $typed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 NOTE: Make all changes first.  Traefik must be deployed/redeployed for
@@ -222,7 +222,7 @@ the email name changes to take affect!
 
 EOF
   echo $typed >/var/plexguide/server.email
-  read -p 'Acknowledge Info | Press [ENTER] ' typed </dev/tty
+  read -p 'Acknowledge info | Press [ENTER] ' typed </dev/tty
 
 }
 layoutbuilder() {
@@ -231,10 +231,10 @@ top_menu "Traefik"
   tee <<-EOF
 
 [1] Top Level Domain App: [$tld]
-[2] Domain Provider     : [$provider]
+[2] Domain provider     : [$provider]
 [3] Domain Name         : [$domain]
-[4] EMail Address       : [$email]
-[5] DNS Delay Check     : [$delaycheck] Seconds
+[4] EMail address       : [$email]
+[5] DNS delay check     : [$delaycheck] Seconds
 EOF
 
   # skips if no provider is set
@@ -281,7 +281,7 @@ EOF
 EOF
 end_menu_back
   # Standby
-  read -p 'Type a Number | Press [ENTER]: ' typed </dev/tty
+  read -p 'Type a number | Press [ENTER]: ' typed </dev/tty
 
   # Prompt User To Input Information Based on Greater > 4 & Less Than pnum++
   if [[ "$typed" -ge "6" && "$typed" -le "$pnum" ]]; then layoutprompt; fi
@@ -294,18 +294,18 @@ layoutprompt() {
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 Input Value - $process5
+🛈 Input value - $process5
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 To quit, type >>> z or exit
 EOF
-  read -p 'Input Value | Press [ENTER]: ' typed </dev/tty
+  read -p 'Input value | Press [ENTER]: ' typed </dev/tty
   if [[ "$typed" == "exit" || "$typed" == "Exit" || "$typed" == "EXIT" || "$typed" == "z" || "$typed" == "Z" ]]; then traefikstart; fi
 
   echo "$typed" >"/var/plexguide/traefik/$provider7/$process5"
   echo
   echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-  read -p 'Information Stored | Press [ENTER] ' typed </dev/tty
+  read -p 'Information stored | Press [ENTER] ' typed </dev/tty
 
 }
 
@@ -331,7 +331,7 @@ EOF
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 Standby for Traefik Deployment Validation
+🛈 Standby for Traefik deployment validation
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 NOTE 1: Do NOT EXIT this interface. Please standby for validation checks!
@@ -372,7 +372,7 @@ EOF
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 Portainer Check
+🛈 Portainer check
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 NOTE 1: Do NOT EXIT this interface. Please standby for validation checks!
@@ -409,7 +409,7 @@ EOF
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 Portainer Check: FAILED!
+🛈 Portainer check: FAILED!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SMART TIP: Check Portainer Now! View the Traefik Logs!
 
@@ -431,14 +431,14 @@ There are multiple reason for failure! Visit our wiki or discord!
 
 EOF
 
-    read -p 'Acknowledge Info | Press [ENTER] ' name </dev/tty
+    read -p 'Acknowledge info | Press [ENTER] ' name </dev/tty
 
     tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 Traefik Process Failed!
+🛈 Traefik process failed!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SMART TIP: When fixed, rerun this process again!
+TIP: When fixed, rerun this process again
 
 NOTE 1: Possibly unable to reach subdomains
 NOTE 2: Subdomains will provide insecure warnings
@@ -461,7 +461,7 @@ EOF
   delseconds=4
   while [[ "$delseconds" -ge "1" ]]; do
     delseconds=$((${delseconds} - 1))
-    echo -ne "StandBy - Rebuilding Containers in: $delseconds Seconds  "'\r'
+    echo -ne "StandBy - Rebuilding containers in: $delseconds seconds  "'\r'
     sleep 1
   done
 
@@ -486,7 +486,7 @@ EOF
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚠️  Traefik - Rebuilding Containers!
+⚠️  Traefik - Rebuilding containers!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
@@ -514,7 +514,7 @@ EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  read -p '✅️ Traefik - Containers Rebuilt! Acknowledge Info | Press [ENTER] ' name </dev/tty
+  read -p '✅️ Traefik - Containers rebuilt! Acknowledge info | Press [ENTER] ' name </dev/tty
 
 }
 
@@ -523,7 +523,7 @@ providerinterface() {
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 Traefik - Select a Provider
+🛈 Traefik - Please select a provider
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
@@ -545,7 +545,7 @@ EOF
   while [[ "$typed2" -lt "1" || "$typed2" -gt "$pnum" ]]; do
     echo "[Z] Exit"
     echo ""
-    read -p 'Type Number | Press [ENTER]: ' typed2 </dev/tty
+    read -p 'Type number | Press [ENTER]: ' typed2 </dev/tty
     if [[ "$typed2" == "exit" || "$typed2" == "Exit" || "$typed2" == "EXIT" || "$typed2" == "z" || "$typed2" == "Z" ]]; then traefikstart; fi
     echo
   done
@@ -554,14 +554,14 @@ EOF
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 Provider Set!
+🛈 Provider has been set
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-NOTE: Make all changes first.  Traefik must be deployed/redeployed for
-this to take affect!
+NOTE: Make all changes first. Traefik must be deployed/redeployed for
+this to take affect.
 
 EOF
-  read -p 'Acknowledge Info | Press [ENTER] ' typed </dev/tty
+  read -p 'Acknowledge info | Press [ENTER] ' typed </dev/tty
 }
 
 traefikbuilder() {
