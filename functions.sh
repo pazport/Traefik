@@ -122,7 +122,7 @@ EOF
 }
 
 deploytraefik() {
-
+clear
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -481,7 +481,7 @@ EOF
   count=$(wc -l </var/plexguide/container.running)
   ((count++))
   ((count--))
-
+clear
   tee <<-EOF
 
 
@@ -508,14 +508,9 @@ EOF
     if [ -e "/opt/communityapps/$app.yml" ]; then ansible-playbook /opt/communityapps/apps/$app.yml; fi
 
   done
-
-  tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
+clear
   read -p '✅️ Traefik - Containers rebuilt! Acknowledge info | Press [ENTER] ' name </dev/tty
-
+clear
 }
 
 providerinterface() {
