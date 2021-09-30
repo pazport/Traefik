@@ -8,6 +8,7 @@
 source /opt/traefik/functions.sh
 source /opt/plexguide/menu/functions/start.sh
 source /opt/plexguide/menu/functions/functions.sh
+source /opt/plexguide/menu/start/start.sh
 
 traefikstart() {
 
