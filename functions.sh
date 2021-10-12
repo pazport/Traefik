@@ -17,7 +17,7 @@ main() {
 blockdeploycheck() {
   if [[ $(cat /var/plexguide/traefik.provider) == "NOT-SET" || $(cat /var/plexguide/server.domain) == "NOT-SET" || $(cat /var/plexguide/server.email) == "NOT-SET" ]]; then
     echo
-    read -p 'Blocking Deployment! Must Configure Everything! | Press [ENTER]' typed </dev/tty
+    read -p 'Blocking deployment! Must configure everything! | Press [ENTER]' typed </dev/tty
     traefikstart
   fi
 }
@@ -32,7 +32,7 @@ delaycheckinterface() {
 
 NOTE: This enables a certain amount of time to be delayed before the
 provider validates your Traefik container! Setting it too low may result
-in the provider being unable to validate your traefik container, which may
+in the provider being unable to validate your Traefik container, which may
 result in MISSING the opportunity to validate your https:// certificates!
 
 Delay the Traefik DNS check for how many seconds? (Default 90)
@@ -50,7 +50,7 @@ EOF
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 New DNS Delay check value: [$typed2] Seconds
+🛈 New DNS delay check value: [$typed2] seconds
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 NOTE 1: Make all changes first. Traefik must be deployed/redeployed for
@@ -61,7 +61,7 @@ seconds as a result of the check.
 
 EOF
   echo "$typed2" >/var/plexguide/server.delaycheck
-  read -p 'Acknowledge Info | Press [ENTER] ' typed </dev/tty
+  read -p 'Acknowledge info | Press [ENTER] ' typed </dev/tty
 
 }
 
@@ -84,7 +84,7 @@ domaininterface() {
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 Domain Name - current domain: $domain
+🛈 Domain name - current domain: $domain
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 To quit, type >>> z or exit
@@ -126,12 +126,12 @@ clear
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 Deploy Traefik with the following values?
+🛈 Confirm the details below and deploy Traefik
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Domain provider: $provider
-Domain name    : $domain
-EMail address  : $email
+Domain provider                               : $provider
+Domain name                                   : $domain
+Email address                                 : $email
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -171,7 +171,7 @@ emailinterface() {
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 Current eMail address: $email
+🛈 Current Email address: $email
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 To quit, type >>> z or exit
@@ -185,7 +185,7 @@ EOF
     tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 EMail invalid - Missing "." - $typed
+🛈 Email invalid - Missing "." - $typed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
@@ -200,7 +200,7 @@ EOF
     tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 EMail invalid - Missing "@" - $typed
+🛈 Email invalid - Missing "@" - $typed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
@@ -214,7 +214,7 @@ EOF
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 New eMail address: $typed
+🛈 New Email address: $typed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 NOTE: Make all changes first.  Traefik must be deployed/redeployed for
@@ -233,7 +233,7 @@ top_menu "Traefik"
 [1] Top Level Domain App: [$tld]
 [2] Domain provider     : [$provider]
 [3] Domain Name         : [$domain]
-[4] EMail address       : [$email]
+[4] Email address       : [$email]
 [5] DNS delay check     : [$delaycheck] Seconds
 EOF
 
@@ -323,7 +323,7 @@ sleep 2
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 ✅ PASSED - repull Core Apps 
+🛈 Core Apps pulled ✔️ 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
  sleep 3
@@ -346,7 +346,7 @@ EOF
 
   while [[ "$delseconds" -ge "1" ]]; do
     delseconds=$((${delseconds} - 1))
-    echo -ne "StandBy - Traefik Validaiton Process: $delseconds Seconds  "'\r'
+    echo -ne "StandBy - Traefik validatiuon process: $delseconds Seconds  "'\r'
     sleep 1
   done
 
@@ -409,21 +409,20 @@ EOF
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 Portainer check: FAILED!
+⚠️ Portainer check: FAILED!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SMART TIP: Check Portainer Now! View the Traefik Logs!
+SMART TIP: Check Portainer now! View the Traefik logs!
 
 Portainer  : https://${cname}.${domain}
 
-REASON 1 - CloudFlare  : portainer is not set in the CNAME or A Records
-REASON 2 - DelayValue  : Set too low - CF users reported using 90 to work
+REASON 1 - Cloudflare  : portainer is not set in the CNAME or A Records
+REASON 2 - Delay value : Set too low - CF users reported using 90 to work
 REASON 3 - DuckDNS     : Forgot to create a portainer or * - A Record
 REASON 4 - Firewall    : Everything is blocked
 REASON 5 - LetsEncrypt : LE HitLimit : check https://crt.sh/?q=${domain}
 REASON 6 - LetsEncrypt : Planned Maintenance In Progress or service down (https://letsencrypt.status.io)
 REASON 7 - User        : PTS Locally; Route is not enable to reach server
-REASON 8 - User        : Bad values input or failed to read the wiki
-REASON 9 - User        : Forgot to point DOMAIN to CORRECT IP ADDRESS
+REASON 8 - User        : Did not point DOMAIN to correct IP address
 
 There are multiple reason for failure! Visit our wiki or discord!
 
@@ -436,7 +435,7 @@ EOF
     tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛈 Traefik process failed!
+⚠️ Traefik process failed!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 TIP: When fixed, rerun this process again
 
@@ -445,7 +444,7 @@ NOTE 2: Subdomains will provide insecure warnings
 
 EOF
 
-    read -p 'Try Again! Acknowledge Info | Press [ENTER] ' name </dev/tty
+    read -p 'Try again! Acknowledge info | Press [ENTER] ' name </dev/tty
     traefikstart
   fi
 
@@ -486,17 +485,17 @@ clear
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚠️  Traefik - Rebuilding containers!
+🛈  Traefik - Rebuilding containers!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  sleep 3
+  sleep 1
   for ((i = 1; i < $count + 1; i++)); do
     app=$(sed "${i}q;d" /var/plexguide/container.running)
     tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️  Traefik - Rebuilding [$app]
+🛈  Traefik - Rebuilding [$app]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
@@ -504,12 +503,12 @@ EOF
     sleep 1.5
 
     #Rebuild Depending on Location
-    if [ -e "/opt/coreapps/apps/$app.yml" ]; then ansible-playbook /opt/coreapps/apps/$app.yml; fi
-    if [ -e "/opt/communityapps/$app.yml" ]; then ansible-playbook /opt/communityapps/apps/$app.yml; fi
+    if [ -e "/opt/coreapps/apps/$app.yml" ]; then ansible-playbook /opt/coreapps/apps/$app.yml && clear; fi
+    if [ -e "/opt/communityapps/$app.yml" ]; then ansible-playbook /opt/communityapps/apps/$app.yml && clear; fi
 
   done
 clear
-  read -p '✅️ Traefik - Containers rebuilt! Acknowledge info | Press [ENTER] ' name </dev/tty
+  read -p 'Traefik - Containers rebuilt ✔️ Acknowledge info | Press [ENTER] ' name </dev/tty
 clear
 }
 
@@ -545,7 +544,7 @@ EOF
     echo
   done
   echo $(cat /var/plexguide/prolist/final.sh | grep "$typed2" | cut -c 5- | awk '{print $1}' | head -n 1) >/var/plexguide/traefik.provider
-
+clear
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -557,6 +556,7 @@ this to take affect.
 
 EOF
   read -p 'Acknowledge info | Press [ENTER] ' typed </dev/tty
+  clear
 }
 
 traefikbuilder() {
