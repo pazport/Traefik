@@ -6,6 +6,8 @@
 # GNU:        General Public License v3.0
 ################################################################################
 source /opt/traefik/functions.sh
+source /opt/plexguide/menu/functions/start.sh
+source /opt/plexguide/menu/functions/functions.sh
 
 traefikstart() {
 
@@ -14,7 +16,7 @@ traefikstart() {
   layoutbuilder # functions - builds out menu
 
   case $typed in
-  1) bash /opt/traefik/tld.sh &&  bash /opt/traefik/traefik.sh &&  exit ;;
+  1) bash /opt/traefik/tld.sh && bash /opt/traefik/traefik.sh &&  exit ;;
   2) providerinterface && bash /opt/traefik/traefik.sh && exit ;;
   3) domaininterface && bash /opt/traefik/traefik.sh && exit ;;
   4) emailinterface && bash /opt/traefik/traefik.sh && exit ;;
@@ -23,8 +25,8 @@ traefikstart() {
   A) blockdeploycheck && deploytraefik &&  bash /opt/traefik/traefik.sh && exit ;;
   B) destroytraefik && bash /opt/traefik/traefik.sh && exit ;;
   b) destroytraefik && bash /opt/traefik/traefik.sh && exit ;;
-  z) exit ;;
-  Z) exit ;;
+  z) clear && networking;;
+  Z) clear && networking;;
   *) traefikstart ;;
   esac
 
